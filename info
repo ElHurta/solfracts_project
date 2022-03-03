@@ -1,0 +1,28 @@
+Wrote new keypair to ~/.config/solana/devnet.json
+===========================================================================
+pubkey: BRZHVDCD4fg8gage1MBQ2ZFtJ6guqYHWmh523ZUCdct9
+===========================================================================
+Save this seed phrase and your BIP39 passphrase to recover your new keypair:
+wine object extra symptom cheese okay wagon celery eternal near beauty mass
+===========================================================================
+
+
+Old:
+npx ts-node js/packages/cli/src/candy-machine-v2-cli.ts upload ./assets --env devnet --keypair ~/.config/solana/devnet.json
+
+npx ts-node js/packages/cli/src/candy-machine-v2-cli.ts create_candy_machine --env devnet --keypair ~/.config/solana/devnet.json
+
+npx ts-node js/packages/cli/src/candy-machine-v2-cli.ts update_candy_machine --keypair ~/.config/solana/devnet.json --price 5 --date "22 Jan 2022 00:00:00 EST"
+
+New:
+
+ts-node js/packages/cli/src/candy-machine-v2-cli.ts upload -e devnet -k ~/.config/solana/devnet.json -cp config.json -c example ./assets
+
+-Check Entry:
+ts-node js/packages/cli/src/candy-machine-v2-cli.ts verify_upload -e devnet -k ~/.config/solana/devnet.json -c example
+
+-Mint One Token:
+ts-node js/packages/cli/src/candy-machine-v2-cli.ts mint_one_token -e devnet -k ~/.config/solana/devnet.json -c example
+
+-Update Candy Machine:
+ts-node js/packages/cli/src/candy-machine-v2-cli.ts update_candy_machine -e devnet -k ~/.config/solana/devnet.json -cp config.json -c example

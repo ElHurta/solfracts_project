@@ -1,0 +1,30 @@
+{
+  "name": "SolFracts #0",
+  "symbol": "SFR",
+  "description": "Remember to replace this description",
+  "seller_fee_basis_points": 2000,
+  "image": "0.png",
+  "external_url": "",
+  "edition": 0,
+  "attributes": [
+    {
+      "trait_type": "Fractal Name",
+      "value": "ColdWings"
+    }
+  ],
+  "properties": {
+    "files": [
+      {
+        "uri": "0.png",
+        "type": "image/png"
+      }
+    ],
+    "category": "image",
+    "creators": [
+      {
+        "address": "7Bw61QzdgQdPjdR5g24fh28Ukbu6vZKWjYE3qPFxahh",
+        "share": 100
+      }
+    ]
+  }
+}

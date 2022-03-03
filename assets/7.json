@@ -1,0 +1,30 @@
+{
+  "name": "SolFracts #7",
+  "symbol": "SFR",
+  "description": "Remember to replace this description",
+  "seller_fee_basis_points": 2000,
+  "image": "7.png",
+  "external_url": "",
+  "edition": 7,
+  "attributes": [
+    {
+      "trait_type": "Fractal Name",
+      "value": "MagmaGold"
+    }
+  ],
+  "properties": {
+    "files": [
+      {
+        "uri": "7.png",
+        "type": "image/png"
+      }
+    ],
+    "category": "image",
+    "creators": [
+      {
+        "address": "7Bw61QzdgQdPjdR5g24fh28Ukbu6vZKWjYE3qPFxahh",
+        "share": 100
+      }
+    ]
+  }
+}

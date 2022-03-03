@@ -1,0 +1,30 @@
+{
+  "name": "SolFracts #6",
+  "symbol": "SFR",
+  "description": "Remember to replace this description",
+  "seller_fee_basis_points": 2000,
+  "image": "6.png",
+  "external_url": "",
+  "edition": 6,
+  "attributes": [
+    {
+      "trait_type": "Fractal Name",
+      "value": "DeepRed"
+    }
+  ],
+  "properties": {
+    "files": [
+      {
+        "uri": "6.png",
+        "type": "image/png"
+      }
+    ],
+    "category": "image",
+    "creators": [
+      {
+        "address": "7Bw61QzdgQdPjdR5g24fh28Ukbu6vZKWjYE3qPFxahh",
+        "share": 100
+      }
+    ]
+  }
+}
