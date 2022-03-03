@@ -3,7 +3,7 @@ import * as anchor from '@project-serum/anchor';
 
 import styled from 'styled-components';
 import { Container, Snackbar } from '@material-ui/core';
-import Paper from '@material-ui/core/Paper';
+//import Paper from '@material-ui/core/Paper';
 import Alert from '@material-ui/lab/Alert';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -22,18 +22,21 @@ import { MintCountdown } from './MintCountdown';
 import { MintButton } from './MintButton';
 import { GatewayProvider } from '@civic/solana-gateway-react';
 
+import heroFractal from '../src/heroFractal.jpg';
+
 const ConnectButton = styled(WalletDialogButton)`
   width: 100%;
   height: 60px;
-  margin-top: 10px;
-  margin-bottom: 5px;
+  margin-top: auto 0;
   background: linear-gradient(180deg, #604ae5 0%, #813eee 100%);
   color: white;
   font-size: 16px;
   font-weight: bold;
 `;
 
-const MintContainer = styled.div``; // add your owns styles here
+const MintContainer = styled.div`
+  background: #000;
+`; // add your owns styles here
 
 export interface HomeProps {
   candyMachineId?: anchor.web3.PublicKey;
@@ -281,21 +284,30 @@ const Home = (props: HomeProps) => {
   ]);
 
   return (
-    <Container style={{ marginTop: 100 }}>
-      <Container maxWidth="xs" style={{ position: 'relative' }}>
-        <Paper
-          style={{
-            padding: 24,
-            paddingBottom: 10,
-            backgroundColor: '#151A1F',
-            borderRadius: 6,
-          }}
-        >
+    <Container>
+      <Container>
+        <div>
           {!wallet.connected ? (
-            <ConnectButton>Connect Wallet</ConnectButton>
+            <div className="connect_btn_container">
+              <h1 className="connect_wllt_placeholder">
+                ¡Hola! Por favor conecta tu wallet para poder comenzar 🙏
+              </h1>
+              <ConnectButton>Connect Wallet</ConnectButton>
+            </div>
           ) : (
-            <>
-              {candyMachine && (
+            <section className="hero_section">
+              {candyMachine && [
+                <div className="hero_div">
+                  <img
+                    className="hero_fractal"
+                    src={heroFractal}
+                    alt="fractal"
+                  ></img>
+                  <div className="marketing">
+                    <h1>SolFracts</h1>
+                    <h2>El Proyecto de Fractales en 3D. Solo en Solana ⭐</h2>
+                  </div>
+                </div>,
                 <Grid
                   container
                   direction="row"
@@ -304,7 +316,7 @@ const Home = (props: HomeProps) => {
                 >
                   <Grid item xs={3}>
                     <Typography variant="body2" color="textSecondary">
-                      Remaining
+                      Restantes
                     </Typography>
                     <Typography
                       variant="h6"
@@ -316,11 +328,12 @@ const Home = (props: HomeProps) => {
                       {`${itemsRemaining}`}
                     </Typography>
                   </Grid>
+
                   <Grid item xs={4}>
                     <Typography variant="body2" color="textSecondary">
                       {isWhitelistUser && discountPrice
                         ? 'Discount Price'
-                        : 'Price'}
+                        : 'Precio'}
                     </Typography>
                     <Typography
                       variant="h6"
@@ -334,22 +347,17 @@ const Home = (props: HomeProps) => {
                           )}`}
                     </Typography>
                   </Grid>
+
                   <Grid item xs={5}>
                     {isActive && endDate && Date.now() < endDate.getTime() ? (
                       <>
                         <MintCountdown
                           key="endSettings"
                           date={getCountdownDate(candyMachine)}
-                          style={{ justifyContent: 'flex-end' }}
                           status="COMPLETED"
                           onComplete={toggleMintButton}
                         />
-                        <Typography
-                          variant="caption"
-                          align="center"
-                          display="block"
-                          style={{ fontWeight: 'bold' }}
-                        >
+                        <Typography variant="caption">
                           TO END OF MINT
                         </Typography>
                       </>
@@ -358,14 +366,13 @@ const Home = (props: HomeProps) => {
                         <MintCountdown
                           key="goLive"
                           date={getCountdownDate(candyMachine)}
-                          style={{ justifyContent: 'flex-end' }}
                           status={
                             candyMachine?.state?.isSoldOut ||
                             (endDate && Date.now() > endDate.getTime())
                               ? 'COMPLETED'
                               : isPresale
                               ? 'PRESALE'
-                              : 'LIVE'
+                              : 'ACTIVO'
                           }
                           onComplete={toggleMintButton}
                         />
@@ -385,8 +392,9 @@ const Home = (props: HomeProps) => {
                       </>
                     )}
                   </Grid>
-                </Grid>
-              )}
+                </Grid>,
+              ]}
+
               <MintContainer>
                 {candyMachine?.state.isActive &&
                 candyMachine?.state.gatekeeper &&
@@ -422,17 +430,9 @@ const Home = (props: HomeProps) => {
                   />
                 )}
               </MintContainer>
-            </>
+            </section>
           )}
-          <Typography
-            variant="caption"
-            align="center"
-            display="block"
-            style={{ marginTop: 7, color: 'grey' }}
-          >
-            Powered by METAPLEX
-          </Typography>
-        </Paper>
+        </div>
       </Container>
 
       <Snackbar
